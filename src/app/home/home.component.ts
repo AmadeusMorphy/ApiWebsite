@@ -92,7 +92,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.getAdult(); // Fetch the data
 
-    this.myDb()
+    // this.myDb()
     this.checkUserLoggedIn()
     this.freeApi()
 
@@ -125,14 +125,14 @@ export class HomeComponent implements OnInit {
 
 
 
-  myDb() {
-    const myApi = 'http://localhost:3000/users'
-    this.http.get(`${myApi}`).subscribe(
-      (res: any) => {
-        console.log(res)
-      }
-    )
-  }
+  // myDb() {
+  //   const myApi = 'http://localhost:3000/users'
+  //   this.http.get(`${myApi}`).subscribe(
+  //     (res: any) => {
+  //       console.log(res)
+  //     }
+  //   )
+  // }
 
 
   logChipLabel(label: string) {
