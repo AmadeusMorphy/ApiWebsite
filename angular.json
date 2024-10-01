@@ -20,6 +20,7 @@
             "outputPath": "dist/apiWebsite",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "baseHref": "/apiWebsite/",
             "polyfills": [
               "zone.js"
             ],
