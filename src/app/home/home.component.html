@@ -1,15 +1,15 @@
 <!-- <app-header (searchUpdated)="updateSearch($event)"></app-header> -->
 
 <div class="searchArea" style="padding-top: 120px;">
-    <span class="p-input-icon-left">
+    <!-- <span class="p-input-icon-left">
         <i class="pi pi-search"></i>
         <input type="text" pInputText [(ngModel)]="searchTerm" (input)="filterSearch()" placeholder="Search.....">
-    </span>
-    <!-- <span class="p-input-icon-left">
+    </span> -->
+    <span class="p-input-icon-left">
         <i class="pi pi-search"></i>
         <input type="text" pInputText [(ngModel)]="searchQuery" (keyup.enter)="onSearch(searchQuery)"
             placeholder="Search.....">
-    </span> -->
+    </span>
 </div>
 
 <div class="chipsTrend">
@@ -19,9 +19,19 @@
 
 <p-toast />
 <div *ngIf="isLoading" class="loading">
-    <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)"
-        animationDuration=".5s" />
+    <!-- <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)"
+        animationDuration=".5s" /> -->
+    <div class="cssload-main">
+        <div class="cssload-heart">
+            <span class="cssload-heartL"></span>
+            <span class="cssload-heartR"></span>
+            <span class="cssload-square"></span>
+        </div>
+        <div class="cssload-shadow"></div>
+    </div>
 </div>
+
+
 <div class="cardss" *ngIf="!this.searchTerm">
     <p-card [style]="{ width: '320px' }" *ngFor="let video of adult">
         <ng-template pTemplate="header">
@@ -46,7 +56,7 @@
         </ng-template>
     </p-card>
 </div>
-<div class="cardss" *ngIf="this.searchTerm">
+<!-- <div class="cardss" *ngIf="this.searchTerm">
     <p-card [style]="{ width: '320px' }" *ngFor="let video of filteredSearch">
         <ng-template pTemplate="header">
             <div class="thumbnail-container">
@@ -63,13 +73,13 @@
                 <a [href]="video.videoUrl" class="ogTitle">{{ video.title }}</a>
                 <p-menu #menu [model]="videoItem" [popup]="true" />
                 <i (click)="menu.toggle($event)" (click)="selectedFav(video.videoId)" class="pi pi-ellipsis-v"></i>
-                <!-- <p-chip label="Action"></p-chip> -->
+
             </div>
             <h4>{{ video.views | numberFormat }} Views</h4>
             <p style="display: none;">{{ video.keywords}}</p>
         </ng-template>
     </p-card>
-</div>
+</div> -->
 
 <div class="card flex justify-content-center">
     <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="120"

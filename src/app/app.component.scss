@@ -69,9 +69,7 @@
     height: 60%;
 }
 
-.form {
-    width: 70%;
-}
+
 
 ::ng-deep .ng-tns-c4042076560-0.p-dialog-content {
     padding: 0;
@@ -91,9 +89,6 @@
     border-radius: 30px;
 }
 
-form.ng-untouched.ng-pristine.ng-invalid {
-    width: 70%;
-}
 
 ::ng-deep .ng-tns-c4042076560-1.p-dialog-content {
     padding: 0;
@@ -298,4 +293,65 @@ body {
 
 ::ng-deep .p-menubar.p-component {
     margin: 9px !important;
+}
+
+::ng-deep .p-sidebar {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('/assets/signupPic.png') !important;
+    /* Path to your image */
+    background-size: cover;
+    /* Makes sure the image covers the whole sidebar */
+    background-position: center;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* Prevents repeating */
+}
+
+::ng-deep .p-sidebar-header.ng-tns-c3811825900-0 {
+    margin-left: 85%
+}
+
+.loginContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.loginItems {
+    background-color: rgba(0, 0, 0, 0.2);
+    /* Optional: Add background color if needed */
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    height: 500px;
+    display: grid;
+
+    /* Optional: Add shadow for better appearance */
+}
+
+.loginInputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.responsiveInput {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    height: 22%;
+}
+
+.loginTitle {
+    font-family: sexyFont;
+    display: flex;
+    justify-content: center;
 }

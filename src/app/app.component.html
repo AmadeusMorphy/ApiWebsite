@@ -44,9 +44,9 @@
 </header>
 
 
-<div class="backdrop" *ngIf="showLoginDialog == true || showSignUpDialog == true" (click)="onClosLogIn()"></div>
+<!-- <div class="backdrop" *ngIf="showLoginDialog == true || showSignUpDialog == true" (click)="onClosLogIn()"></div> -->
 
-<p-dialog [(visible)]="showLoginDialog" [modal]="true" [closable]="true" [draggable]="false" [dismissableMask]="true">
+<!-- <p-dialog [(visible)]="showLoginDialog" [modal]="true" [closable]="true" [draggable]="false" [dismissableMask]="true">
     <div class="dialogContainer">
         <div class="container1">
             <img class="loginImg" src="assets/loginPic.png">
@@ -92,5 +92,44 @@
             </form>
         </div>
     </div>
-</p-dialog>
+</p-dialog> -->
+
+
+
+
+<p-sidebar [(visible)]="showLoginDialog" [fullScreen]="true">
+    <div class="loginContainer">
+        <div class="loginItems">
+            <h2 class="loginTitle">Log In</h2>
+            <form [formGroup]="signInForm" ng>
+                <div class="loginInputs">
+                    <input type="email" pInputText formControlName="email" placeholder="Email"
+                        class="responsiveInput" />
+                    <input type="password" pInputText formControlName="password" placeholder="Password"
+                        class="responsiveInput" />
+                </div>
+            </form>
+            <p-button type="submit" [disabled]="!signInForm.valid">Log In</p-button>
+        </div>
+    </div>
+</p-sidebar>
+<p-sidebar [(visible)]="showSignUpDialog" [fullScreen]="true">
+    <div class="loginContainer">
+        <div class="loginItems">
+            <h2 class="loginTitle">Log In</h2>
+            <form [formGroup]="signUpForm">
+                <div class="loginInputs">
+                    <input type="text" pInputText formControlName="username" placeholder="Username"
+                        class="responsiveInput" />
+                    <input type="email" pInputText formControlName="email" placeholder="Email"
+                        class="responsiveInput" />
+                    <input type="password" pInputText formControlName="password" placeholder="Password"
+                        class="responsiveInput" />
+                </div>
+            </form>
+            <p-button type="submit" [disabled]="!signUpForm.valid">Log In</p-button>
+        </div>
+    </div>
+</p-sidebar>
+
 <router-outlet></router-outlet>

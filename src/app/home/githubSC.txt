@@ -1,0 +1,10 @@
+1. ng build --output-path=dist --base-href="/apiWebsite/"
+
+2. git add .
+   git commit -m "Updated the project with new changes"
+   git push origin main
+
+3. npx angular-cli-ghpages --dir=dist
+
+4. https://amadeusmorphy.github.io/apiWebsite/
+
