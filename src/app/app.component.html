@@ -1,0 +1,96 @@
+<header class="stickyHeader" [ngClass]="{'hidden': isHidden}">
+    <p-menubar [model]="items">
+        <ng-template pTemplate="start">
+            <p-sidebar [(visible)]="display">
+                <p-panelMenu [model]="sideItems" [style]="{'width':'300px'}"></p-panelMenu>
+            </p-sidebar>
+            <!-- <img class="logo" src="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" /> -->
+            <ng-template pTemplate="end" let-item let-root="root">
+                <a pRipple class="flex align-items-center p-menuitem-link">
+                    <span [class]="item.icon"></span>
+                    <span class="ml-2">{{ item.label }}</span>
+                    <p-badge *ngIf="item.badge" [ngClass]="{ 'ml-auto': !root, 'ml-2': root }" [value]="item.badge" />
+                    <span *ngIf="item.shortcut"
+                        class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1">
+                        {{ item.shortcut}}
+                    </span>
+                </a>
+            </ng-template>
+        </ng-template>
+
+        <div *ngIf="isLoading" class="loading">
+            <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)"
+                animationDuration=".5s" />
+        </div>
+
+        <ng-template pTemplate="end">
+
+            <div class="flex align-items-center">
+                <h2 *ngIf="this.userLoggedIn">Welcome back {{this.userName}}</h2>
+                <input type="text" [(ngModel)]="query" (keyup.enter)="onSearch(query)" pInputText
+                    placeholder="Search...">
+
+                <div class="profile">
+
+                    <p-menu #menu [model]="sideItems" [popup]="true" />
+                    <p-avatar (click)="menu.toggle($event)" icon="pi pi-user" styleClass="mr-2" size="large"
+                        shape="circle" />
+                </div>
+            </div>
+        </ng-template>
+    </p-menubar>
+
+
+</header>
+
+
+<div class="backdrop" *ngIf="showLoginDialog == true || showSignUpDialog == true" (click)="onClosLogIn()"></div>
+
+<p-dialog [(visible)]="showLoginDialog" [modal]="true" [closable]="true" [draggable]="false" [dismissableMask]="true">
+    <div class="dialogContainer">
+        <div class="container1">
+            <img class="loginImg" src="assets/loginPic.png">
+        </div>
+        <div class="container2">
+            <form [formGroup]="signInForm" (ngSubmit)="login()">
+
+                <div class="titleLogin">
+                    <h2 class="titleText">Hey Sexy</h2>
+                </div>
+                <div class="card flex justify-content-center">
+                    <input type="email" pInputText formControlName="email" placeholder="Email"
+                        class="responsiveInput" />
+                    <input type="password" pInputText formControlName="password" placeholder="Password"
+                        class="responsiveInput" />
+                    <p-button type="submit" [disabled]="!signInForm.valid">Log In</p-button>
+                </div>
+            </form>
+        </div>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="showSignUpDialog" [modal]="true" [closable]="true" [draggable]="false" [dismissableMask]="true">
+    <div class="dialogContainer">
+        <div class="container1">
+            <img class="loginImg" src="assets/signupPic.png">
+        </div>
+        <div class="container2">
+            <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+
+                <div class="titleLogin">
+                    <h2 class="titleText">Hey Sexy</h2>
+                </div>
+                <div class="card flex justify-content-center">
+                    <input type="name" pInputText formControlName="name" placeholder="Username"
+                        class="responsiveInput" />
+                    <input type="email" pInputText formControlName="email" placeholder="Email"
+                        class="responsiveInput" />
+                    <input type="password" pInputText formControlName="password" placeholder="Password"
+                        class="responsiveInput" />
+                    <p-button type="submit" [disabled]="!signUpForm.valid">Log In</p-button>
+                </div>
+            </form>
+        </div>
+    </div>
+</p-dialog>
+<router-outlet></router-outlet>

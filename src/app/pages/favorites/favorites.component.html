@@ -1,0 +1,64 @@
+<!-- <button (click)="logout()">Logout</button> -->
+
+
+<!-- <div>
+    <h2>Welcome, {{ loggedInUser.name }}</h2>
+    <form [formGroup]="playlistItemForm" (ngSubmit)="addPlaylistItem()">
+        <label for="item">Add to Playlist:</label>
+        <input id="item" formControlName="item" />
+        <button type="submit">Add</button>
+    </form>
+
+    <h3>Your Playlist:</h3>
+    <ul>
+        <li *ngFor="let item of loggedInUser?.playlist">{{ item.videoUrl }}</li>
+    </ul>
+</div> -->
+
+<div *ngIf="isLoading" class="loading">
+    <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)"
+        animationDuration=".5s" />
+</div>
+
+<p-toast />
+
+<div class="cardss">
+    <p-card [style]="{ width: '320px' }" *ngFor="let fav of loggedInUser?.playlist">
+        <ng-template pTemplate="header">
+            <div class="thumbnail-container">
+                <a [href]="fav.videoUrl">
+                    <img *ngIf="!fav.isThumbnailPlaying" alt="Card" [src]="fav.imgUrl"
+                        (mouseover)="playAnimation(fav.videoId)" />
+
+                    <img *ngIf="fav.isThumbnailPlaying" [src]="selectedThumbs[currentThumbIndex]"
+                        (mouseleave)="stopSlideshow(fav.videoId)" />
+                    <p class="gender-label">{{ fav.length }}</p>
+                </a>
+            </div>
+            <div class="details">
+                <a [href]="fav.videoUrl" class="ogTitle">{{ fav.title }}</a>
+                <p-menu #menu [model]="videoItem" [popup]="true" />
+                <i (click)="menu.toggle($event)" (click)="selectedFav(fav.videoId)" class="pi pi-ellipsis-v"></i>
+
+            </div>
+            <h4>{{ fav.views | numberFormat }} Views</h4>
+        </ng-template>
+    </p-card>
+</div>
+
+<p-sidebar [(visible)]="sideBarVisible" position="right">
+    <ng-template pTemplate="header">
+        <div class="flex align-items-center gap-2">
+            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+            <span class="font-bold">
+                Amy Elsner
+            </span>
+        </div>
+    </ng-template>
+    <p>
+        Lorem ipsum dolor sit amet...
+    </p>
+</p-sidebar>
+
+<p-button (onClick)="sideBarVisible = true">Click</p-button>
+<router-outlet></router-outlet>

@@ -1,0 +1,65 @@
+@import "node_modules/primeng/resources/themes/mdc-dark-deeppurple/theme.css";
+@import "node_modules/primeng/resources/primeng.min.css";
+@import "node_modules/primeicons/primeicons.css";
+
+@font-face {
+    font-family: sexyFont;
+    src: url(assets/fonts/KaushanScript-Regular.ttf) format('truetype');
+}
+
+body {
+    margin: 0 !important;
+}
+
+.sexyFont {
+
+    font-family: sexyFont;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Full viewport height */
+    width: 100vw;
+    /* Full viewport width */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    /* Ensure it stays on top */
+    background-color: rgba(0, 0, 0, 0.8);
+    pointer-events: all;
+    /* Block interactions */
+    /* Optional: a translucent background */
+}
+
+body.loading-active {
+    overflow: hidden;
+    /* Prevents page scrolling */
+}
+
+::ng-deep .p-toast .p-toast-message-success {
+    background-color: #810999 !important;
+    /* Change background color */
+    border-color: #bf00c5 !important;
+    /* Change border color */
+    color: #ffffff !important;
+    /* Change text color */
+}
+
+input.p-inputtext.p-component.p-element {
+    border-radius: 30px !important;
+}
+
+button.p-ripple.p-element.p-button.p-component {
+    width: 100%;
+    justify-content: center;
+    color: white;
+    font-family: sexyFont;
+}
+
+.p-dialog .p-dialog-content:last-of-type {
+    border-radius: 18px;
+}

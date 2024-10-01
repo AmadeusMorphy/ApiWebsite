@@ -1,0 +1,28 @@
+.containers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* Adjust the spacing between rows */
+    gap: 15px;
+    /* Adds space between the images */
+}
+
+.pics {
+    width: calc(25% - 15px);
+    /* Make sure the images fit 4 per row with gaps */
+    box-sizing: border-box;
+}
+
+.pics img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    /* Ensures the image maintains aspect ratio while filling the container */
+    border-radius: 8px;
+    /* Optional, adds rounded corners */
+}
+
+.pics p {
+    text-align: center;
+    margin-top: 8px;
+}

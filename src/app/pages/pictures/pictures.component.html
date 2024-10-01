@@ -1,0 +1,19 @@
+<div class="containers">
+    <div class="pics" *ngFor="let pic of pics">
+        <img [src]="pic.imgUrl" alt="" style="width: 250px;">
+        <p>{{pic.title}}</p>
+    </div>
+    <div class="pics" *ngFor="let img of pics2">
+        <img [src]="img.imgUrl" alt="" style="width: 250px;">
+        <p>{{img.title}}</p>
+    </div>
+    <div class="pics" *ngFor="let lik of pics3">
+        <img [src]="lik.imgUrl" alt="" style="width: 250px;">
+        <p>{{lik.title}}</p>
+    </div>
+    <div class="pics" *ngFor="let fil of pics4">
+        <img [src]="fil.imgUrl" alt="" style="width: 250px;">
+        <p>{{fil.title}}</p>
+    </div>
+
+</div>
