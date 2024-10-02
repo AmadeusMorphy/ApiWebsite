@@ -6,6 +6,9 @@
 
 3. npx angular-cli-ghpages --dir=dist
 
+npx gh-pages -d dist/apiWebsite
+
+
 4. https://amadeusmorphy.github.io/apiWebsite/
 
 ng build --prod --base-href "https://amadeusmorphy.github.io/apiWebsite/" use this instead of the first one
