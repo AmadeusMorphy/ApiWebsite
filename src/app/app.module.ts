@@ -30,6 +30,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { PicturesComponent } from './pages/pictures/pictures.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,7 @@ import { PicturesComponent } from './pages/pictures/pictures.component';
     ProgressSpinnerModule,
     ToastModule
   ],
-  providers: [MessageService],
+  providers: [MessageService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
