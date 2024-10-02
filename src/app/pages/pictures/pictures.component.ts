@@ -27,6 +27,10 @@ export class PicturesComponent {
     title: string
   }[] = []
 
+  imgDialog: boolean = false;
+  selectedImageUrl: string = ''
+
+
   ngOnInit() {
     this.getPics2()
     this.getPics3()
@@ -102,5 +106,11 @@ export class PicturesComponent {
         console.log(this.pics4)
       }
     )
+  }
+
+
+  openImageDialog(imgUrl: string): void {
+    this.selectedImageUrl = imgUrl;
+    this.imgDialog = true
   }
 }

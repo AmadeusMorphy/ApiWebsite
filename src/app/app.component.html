@@ -18,17 +18,22 @@
             </ng-template>
         </ng-template>
 
+
         <div *ngIf="isLoading" class="loading">
-            <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)"
-                animationDuration=".5s" />
+            <div class="cssload-main">
+                <div class="cssload-heart">
+                    <span class="cssload-heartL"></span>
+                    <span class="cssload-heartR"></span>
+                    <span class="cssload-square"></span>
+                </div>
+                <div class="cssload-shadow"></div>
+            </div>
         </div>
 
         <ng-template pTemplate="end">
 
             <div class="flex align-items-center">
-                <h2 *ngIf="this.userLoggedIn">Welcome back {{this.userName}}</h2>
-                <input type="text" [(ngModel)]="query" (keyup.enter)="onSearch(query)" pInputText
-                    placeholder="Search...">
+                <h2 *ngIf="this.userLoggedIn">{{this.userName}}</h2>
 
                 <div class="profile">
 
@@ -98,36 +103,44 @@
 
 
 <p-sidebar [(visible)]="showLoginDialog" [fullScreen]="true">
+    <div *ngIf="isLoading" class="loading">
+        <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)"
+            animationDuration=".5s" />
+    </div>
     <div class="loginContainer">
         <div class="loginItems">
             <h2 class="loginTitle">Log In</h2>
-            <form [formGroup]="signInForm" ng>
+            <form [formGroup]="signInForm" (ngSubmit)="login()">
                 <div class="loginInputs">
                     <input type="email" pInputText formControlName="email" placeholder="Email"
                         class="responsiveInput" />
                     <input type="password" pInputText formControlName="password" placeholder="Password"
                         class="responsiveInput" />
                 </div>
+                <p-button type="submit" [disabled]="!signInForm.valid">Log In</p-button>
             </form>
-            <p-button type="submit" [disabled]="!signInForm.valid">Log In</p-button>
         </div>
     </div>
 </p-sidebar>
 <p-sidebar [(visible)]="showSignUpDialog" [fullScreen]="true">
+    <div *ngIf="isLoading" class="loading">
+        <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)"
+            animationDuration=".5s" />
+    </div>
     <div class="loginContainer">
         <div class="loginItems">
-            <h2 class="loginTitle">Log In</h2>
-            <form [formGroup]="signUpForm">
+            <h2 class="loginTitle">Sign Up</h2>
+            <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
                 <div class="loginInputs">
-                    <input type="text" pInputText formControlName="userName" placeholder="Username"
+                    <input type="text" pInputText formControlName="name" placeholder="Username"
                         class="responsiveInput" />
                     <input type="email" pInputText formControlName="email" placeholder="Email"
                         class="responsiveInput" />
                     <input type="password" pInputText formControlName="password" placeholder="Password"
                         class="responsiveInput" />
                 </div>
+                <p-button type="submit" [disabled]="!signUpForm.valid">Log In</p-button>
             </form>
-            <p-button type="submit" [disabled]="!signUpForm.valid">Log In</p-button>
         </div>
     </div>
 </p-sidebar>

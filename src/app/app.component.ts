@@ -262,10 +262,12 @@ export class AppComponent {
           this.checkUserLoggedIn()
           console.log('You Logged in: ', user)
         } else {
+          this.isLoading = false
           console.error('Invalid email or password');
         }
       },
       (error) => {
+        this.isLoading = false
         console.error('Error during sign-in', error);
       }
     );

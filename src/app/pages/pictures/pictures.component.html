@@ -1,4 +1,4 @@
-<div class="containers">
+<!-- <div class="containers">
     <div class="pics" *ngFor="let pic of pics">
         <img [src]="pic.imgUrl" alt="" style="width: 250px;">
         <p>{{pic.title}}</p>
@@ -16,4 +16,37 @@
         <p>{{fil.title}}</p>
     </div>
 
+</div> -->
+
+
+
+
+
+
+<div class="cardss">
+    <p-card [style]="{ width: '320px' }" *ngFor="let video of pics">
+        <ng-template pTemplate="header">
+            <div class="thumbnail-container">
+                <img alt="Card" [src]="video.imgUrl" (click)="openImageDialog(video.imgUrl)" />
+            </div>
+
+            <div class="details">
+                <i class="pi pi-ellipsis-v"></i>
+                <!-- <p-chip label="Action"></p-chip> -->
+            </div>
+            <h4>{{ video.title }} Views</h4>
+        </ng-template>
+    </p-card>
 </div>
+
+<p-sidebar [(visible)]="imgDialog" [fullScreen]="true" class="image-preview-container">
+    <ng-template pTemplate="header">
+        <span class="font-semibold text-xl">
+            Sidebar
+        </span>
+    </ng-template>
+    <p>
+    <div class="image-preview-container">
+        <img [src]="selectedImageUrl" class="centered-image" style="max-width: 100%; height: auto;">
+    </div>
+</p-sidebar>

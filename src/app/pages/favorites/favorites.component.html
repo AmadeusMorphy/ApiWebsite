@@ -15,11 +15,17 @@
     </ul>
 </div> -->
 
-<div *ngIf="isLoading" class="loading">
-    <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)"
-        animationDuration=".5s" />
-</div>
 
+<div *ngIf="isLoading" class="loading">
+    <div class="cssload-main">
+        <div class="cssload-heart">
+            <span class="cssload-heartL"></span>
+            <span class="cssload-heartR"></span>
+            <span class="cssload-square"></span>
+        </div>
+        <div class="cssload-shadow"></div>
+    </div>
+</div>
 <p-toast />
 
 <div class="cardss">
@@ -45,20 +51,4 @@
         </ng-template>
     </p-card>
 </div>
-
-<p-sidebar [(visible)]="sideBarVisible" position="right">
-    <ng-template pTemplate="header">
-        <div class="flex align-items-center gap-2">
-            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
-            <span class="font-bold">
-                Amy Elsner
-            </span>
-        </div>
-    </ng-template>
-    <p>
-        Lorem ipsum dolor sit amet...
-    </p>
-</p-sidebar>
-
-<p-button (onClick)="sideBarVisible = true">Click</p-button>
 <router-outlet></router-outlet>

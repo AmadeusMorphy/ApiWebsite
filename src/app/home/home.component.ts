@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   isLoading: boolean = true;
 
 
-  searchQuery: string = 'teen';
+  searchQuery: string = '';
   currentCard: any;
   changePage: number = 1;
 
@@ -116,13 +116,12 @@ export class HomeComponent implements OnInit {
 
   freeApi() {
 
-    this.http.get('https://www.pornpics.com/additional_thumbs?mix=2&langs=en-US&code=us').subscribe(
+    this.http.get('https://api.redtube.com/?data=redtube').subscribe(
       (res: any) => {
         console.log('FREE API: ', res)
       }
     )
   }
-
 
 
   // myDb() {
@@ -142,7 +141,7 @@ export class HomeComponent implements OnInit {
   }
 
   getLoggedInUser(): void {
-    const userId = localStorage.getItem('userId'); // Retrieve user ID from local storage
+    const userId = localStorage.getItem('Id'); // Retrieve user ID from local storage
   }
 
   checkUserLoggedIn() {
